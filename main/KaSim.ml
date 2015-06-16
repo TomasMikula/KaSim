@@ -1,6 +1,6 @@
 open Mods
 
-let version = "4.0-refactoring"
+let version = "4.0-beta"
 
 let usage_msg =
   "KaSim "^version^":\n"^
