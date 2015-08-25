@@ -98,7 +98,7 @@ clean: temp-clean-for-ignorant-that-clean-must-be-done-before-fetch clean_doc
 	$(OCAMLBINPATH)ocamlbuild -clean
 	rm -f sanity_test bin/sanity_test
 	rm -f KaSim bin/KaSim KaSa bin/KaSa
-	rm js/JaSim.js
+	rm -f js/JaSim.js
 	find . -name \*~ -delete
 	+$(MAKE) KAPPABIN=$(CURDIR)/bin/ -C models/test_suite clean
 
