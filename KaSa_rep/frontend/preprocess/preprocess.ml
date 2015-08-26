@@ -24,7 +24,7 @@ let empty_agent handler error =
     Cckappa_sig.agent_kasim_id = 0  ; 
     Cckappa_sig.agent_name = 0  ;
     Cckappa_sig.agent_interface =  interface ;
-    Cckappa_sig.agent_position = Lexing.dummy_pos,Lexing.dummy_pos ; 
+    Cckappa_sig.agent_position = Location.dummy
          }
   
 let empty_mixture handler error = 
@@ -65,7 +65,7 @@ let empty_e_rule handler error =
 	  Ckappa_sig.lhs = Ckappa_sig.EMPTY_MIX ; 
 	  Ckappa_sig.arrow = Ast.RAR (*empty_pos*);
 	  Ckappa_sig.rhs = Ckappa_sig.EMPTY_MIX; 
-	  Ckappa_sig.k_def = (Ast.CONST (Nbr.F 0.),(Lexing.dummy_pos,Lexing.dummy_pos));
+	  Ckappa_sig.k_def = Location.dummy_annot (Ast.CONST (Nbr.F 0.));
        (*       Ckappa_sig.k_un_radius = None ; *)
 	  Ckappa_sig.k_un = None};
       Cckappa_sig.e_rule_c_rule = rule }
@@ -154,8 +154,8 @@ let translate_agent_sig parameters error handler agent kasim_id =
                     site_name 
                     { 
                       Cckappa_sig.site_name = site_name ;
-                      Cckappa_sig.site_position = Lexing.dummy_pos,Lexing.dummy_pos; (*port.Ckappa_sig.port_pos ;*)
-                      Cckappa_sig.site_state = internal_list ; 
+                      Cckappa_sig.site_position = Location.dummy ; (*port.Ckappa_sig.port_pos ;*)
+                      Cckappa_sig.site_state = internal_list ;
                       Cckappa_sig.site_free = port.Ckappa_sig.port_free 
                     } c_interface
         in 
@@ -173,9 +173,9 @@ let translate_agent_sig parameters error handler agent kasim_id =
                             site_name 
                             { 
                                Cckappa_sig.site_name = site_name ;
-                               Cckappa_sig.site_position = Lexing.dummy_pos,Lexing.dummy_pos ;
+                               Cckappa_sig.site_position = Location.dummy ;
                                Cckappa_sig.site_state = [0] ;
-                               Cckappa_sig.site_free = port.Ckappa_sig.port_free 
+                               Cckappa_sig.site_free = port.Ckappa_sig.port_free
                             }
                             c_interface
               end
@@ -192,7 +192,7 @@ let translate_agent_sig parameters error handler agent kasim_id =
       Cckappa_sig.agent_kasim_id = kasim_id ;
       Cckappa_sig.agent_name = agent_name ; 
       Cckappa_sig.agent_interface = c_interface ; 
-      Cckappa_sig.agent_position = Lexing.dummy_pos, Lexing.dummy_pos ; 
+      Cckappa_sig.agent_position = Location.dummy ;
      }:Cckappa_sig.agent_sig)
 
 let translate_view parameters error handler k kasim_id agent bond_list = 
@@ -242,7 +242,7 @@ let translate_view parameters error handler k kasim_id agent bond_list =
                     error 
                     site_name 
                     { Cckappa_sig.site_name = site_name ;
-                      Cckappa_sig.site_position = Lexing.dummy_pos,Lexing.dummy_pos ; 
+                      Cckappa_sig.site_position = Location.dummy ;
                       Cckappa_sig.site_free = None ; 
                       Cckappa_sig.site_state = 
                         {
@@ -267,7 +267,7 @@ let translate_view parameters error handler k kasim_id agent bond_list =
                             site_name 
                             { 
                                Cckappa_sig.site_name = site_name ;
-                               Cckappa_sig.site_position = Lexing.dummy_pos,Lexing.dummy_pos ;
+                               Cckappa_sig.site_position = Location.dummy ;
                                Cckappa_sig.site_free = port.Ckappa_sig.port_free ; 
                                Cckappa_sig.site_state = {Cckappa_sig.min = 0 ; Cckappa_sig.max = 0 } 
                               }
@@ -297,7 +297,7 @@ let translate_view parameters error handler k kasim_id agent bond_list =
                       { 
                         Cckappa_sig.site_name = site_name ;
                         Cckappa_sig.site_free = port.Ckappa_sig.port_free; 
-                        Cckappa_sig.site_position = Lexing.dummy_pos,Lexing.dummy_pos; 
+                        Cckappa_sig.site_position = Location.dummy ;
                         Cckappa_sig.site_state = {Cckappa_sig.min = min 1 max; Cckappa_sig.max = max}
                       } 
                       c_interface 
@@ -353,7 +353,7 @@ let translate_view parameters error handler k kasim_id agent bond_list =
                       { 
                         Cckappa_sig.site_free = port.Ckappa_sig.port_free; 
                         Cckappa_sig.site_name = site_name ;
-                        Cckappa_sig.site_position = Lexing.dummy_pos,Lexing.dummy_pos; 
+                        Cckappa_sig.site_position = Location.dummy ;
                         Cckappa_sig.site_state = {Cckappa_sig.min = i; Cckappa_sig.max = i}
                       } 
                       c_interface 
@@ -409,7 +409,7 @@ let translate_view parameters error handler k kasim_id agent bond_list =
                       { 
                         Cckappa_sig.site_free = port.Ckappa_sig.port_free; 
                         Cckappa_sig.site_name = site_name ;
-                        Cckappa_sig.site_position = Lexing.dummy_pos,Lexing.dummy_pos ; 
+                        Cckappa_sig.site_position = Location.dummy ;
                         Cckappa_sig.site_state = {Cckappa_sig.min = i; Cckappa_sig.max = i}
                       } 
                       c_interface 
@@ -425,7 +425,7 @@ let translate_view parameters error handler k kasim_id agent bond_list =
            Cckappa_sig.agent_kasim_id = kasim_id ;
            Cckappa_sig.agent_name = agent_name ; 
            Cckappa_sig.agent_interface = c_interface ; 
-           Cckappa_sig.agent_position = Lexing.dummy_pos,Lexing.dummy_pos
+           Cckappa_sig.agent_position = Location.dummy ;
           }
 
   
