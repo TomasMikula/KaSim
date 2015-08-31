@@ -76,8 +76,11 @@ let compress_and_print logger env log_info step_list =
           let () = if log_step then Debug.tag logger"\t - refining events" in
 	  let refined_event_list =
 	    if Graph_closure.ignore_flow_from_outgoing_siphon then
-	      let () = if log_step then Debug.tag logger"\t - detecting siphons" in
-	      D.S.PH.B.PB.CI.Po.K.fill_siphon refined_event_list
+	      let () =
+		if log_step then Debug.tag logger"\t - detecting siphons" in
+	      let siphoned_event_list =
+		D.S.PH.B.PB.CI.Po.K.fill_siphon refined_event_list in
+              D.S.PH.B.PB.CI.Po.K.disambiguate siphoned_event_list
 	    else refined_event_list in
           let () =
             if debug_mode then
